@@ -1,10 +1,15 @@
 #[cfg(test)]
 mod unit_tests;
 
-use std::mem;
-use std::panic::{PanicInfo, set_hook, take_hook};
+use std::{
+    mem,
+    panic::{set_hook, take_hook, PanicInfo},
+};
 
-pub struct SilentPanic(Option<Box::<dyn Fn(&PanicInfo<'_>) + Send + Sync + 'static>>);
+// TODO: figure out how to test this (!). Specifically how to get the unit test to confirm the existence of panic spew
+//       when I don't activate `SilentPanic` and the absence of the panic spew when I do activate it.  For that the unit
+//       tests need to be able to get the test spew.
+pub struct SilentPanic(Option<Box<dyn Fn(&PanicInfo<'_>) + Send + Sync + 'static>>);
 
 impl SilentPanic {
     #[must_use]
@@ -28,7 +33,3 @@ impl Drop for SilentPanic {
         set_hook(original_handler);
     }
 }
-
-// TODO: figure out how to test this (!). Specifically how to get the unit test to confirm the existence of panic spew
-//       when I don't activate `SilentPanic` and the absence of the panic spew when I do activate it.  For that the unit
-//       tests need to be able to get the test spew.

@@ -33,5 +33,5 @@ mod silent_panic;
 
 pub use {
     error::{Error, Result},
-    silent_panic::SilentPanic,
+    crate::silent_panic::SilentPanic,
 };
