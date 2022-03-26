@@ -29,4 +29,9 @@
 
 mod consts;
 mod error;
-pub use error::{Error, Result};
+mod silent_panic;
+
+pub use {
+    error::{Error, Result},
+    silent_panic::SilentPanic,
+};

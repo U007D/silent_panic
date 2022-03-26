@@ -1,5 +1,5 @@
 [package]
-authors = ["Brad Gibson <brad@tpfs.io>"]
+authors = ["Brad Gibson <brad@humanenginuity.com>"]
 categories = []
 description = "<describe crate here>"
 edition = "2021"
@@ -15,6 +15,7 @@ thiserror = "1.0.30"
 
 [dev-dependencies]
 assert2 = "0.3.6"
+crossbeam-utils = "0.8.5"
 
 [profile.dev]
 codegen-units = 1
