@@ -24,12 +24,12 @@ impl SilentPanic {
     }
 }
 
-impl Drop for SilentPanic {
-    fn drop(&mut self) {
-        // Retrieve original panic handler
-        let original_handler = mem::replace(&mut self.0, None).unwrap_or_else(|| unreachable!());
-
-        // Restore original panic handler
-        set_hook(original_handler);
-    }
-}
+// impl Drop for SilentPanic {
+//     fn drop(&mut self) {
+//         // Retrieve original panic handler
+//         let original_handler = mem::replace(&mut self.0, None).unwrap_or_else(|| unreachable!());
+//
+//         // Restore original panic handler
+//         set_hook(original_handler);
+//     }
+// }
